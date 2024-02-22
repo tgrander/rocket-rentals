@@ -16,7 +16,8 @@ model User {
 
   password Password?
   notes    Note[]
-  host Host
+  role    Role[]
+  host Host?
 }
 
 model Password {
@@ -24,6 +25,13 @@ model Password {
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String @unique
+}
+
+model Role {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  users User[]
 }
 
 model Note {
@@ -38,9 +46,10 @@ model Note {
   userId String
 }
 
-model SpaceCraft {
+model Spacecraft {
   id String @id @default(dbgenerated("substring(gen_random_uuid()::text, 1, 10)"))
   name  String
+  images   SpacecraftImages[]
   speed Int
   type SpaceCraftType @relation(fields: [typeId], references: [id])
   typeId Int
@@ -55,26 +64,47 @@ model SpaceCraft {
   updatedAt DateTime @updatedAt
 }
 
+model SpacecraftImages {
+  imageID     Int      @id @default(autoincrement())
+  spacecraftID String
+  imagePath   String
+  description String?
+  spacecraft  Spacecraft @relation(fields: [spacecraftID], references: [id])
+
+  @@map("spacecraft_images")
+}
+
 model SpaceCraftType {
   id   Int    @id @default(autoincrement())
   name String @unique
-  spaceCrafts SpaceCraft[]
+  spaceCrafts Spacecraft[]
 }
 
 model SpaceCraftStatus {
   id   Int    @id @default(autoincrement())
   name String @unique
-  spaceCrafts SpaceCraft[]
+  spaceCrafts Spacecraft[]
 }
 
 model Host {
   id String @id @default(dbgenerated("substring(gen_random_uuid()::text, 1, 10)"))
   name String @unique
-  spaceCrafts SpaceCraft[]
+  spaceCrafts Spacecraft[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String @unique
+}
+
+model Destination {
+  id String @id @default(dbgenerated("substring(gen_random_uuid()::text, 1, 10)"))
+  name String @unique
+  description String @unique
+  Distance Int
+  TravelTime Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
