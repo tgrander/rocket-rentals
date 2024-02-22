@@ -8,7 +8,7 @@ generator client {
 }
 
 model User {
-  id    String @id @default(cuid())
+  id   Int    @id @default(autoincrement())
   email String @unique
 
   createdAt DateTime @default(now())
@@ -24,7 +24,7 @@ model Password {
   hash String
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String @unique
+  userId Int @unique
 }
 
 model Role {
@@ -35,7 +35,7 @@ model Role {
 }
 
 model Note {
-  id    String @id @default(cuid())
+  id   Int    @id @default(autoincrement())
   title String
   body  String
 
@@ -43,11 +43,11 @@ model Note {
   updatedAt DateTime @updatedAt
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String
+  userId Int
 }
 
 model Spacecraft {
-  id String @id @default(dbgenerated("substring(gen_random_uuid()::text, 1, 10)"))
+  id   Int    @id @default(autoincrement())
   name  String
   images   SpacecraftImages[]
   speed Int
@@ -58,7 +58,7 @@ model Spacecraft {
 
   // Host
   host Host @relation(fields: [hostId], references: [id])
-  hostId String
+  hostId Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -66,7 +66,7 @@ model Spacecraft {
 
 model SpacecraftImages {
   imageID     Int      @id @default(autoincrement())
-  spacecraftID String
+  spacecraftID Int
   imagePath   String
   description String?
   spacecraft  Spacecraft @relation(fields: [spacecraftID], references: [id])
@@ -87,7 +87,7 @@ model SpaceCraftStatus {
 }
 
 model Host {
-  id String @id @default(dbgenerated("substring(gen_random_uuid()::text, 1, 10)"))
+  id   Int    @id @default(autoincrement())
   name String @unique
   spaceCrafts Spacecraft[]
 
@@ -95,11 +95,11 @@ model Host {
   updatedAt DateTime @updatedAt
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId String @unique
+  userId Int @unique
 }
 
 model Destination {
-  id String @id @default(dbgenerated("substring(gen_random_uuid()::text, 1, 10)"))
+  id   Int    @id @default(autoincrement())
   name String @unique
   description String @unique
   Distance Int
