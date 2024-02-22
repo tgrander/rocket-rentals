@@ -34,7 +34,7 @@ export const ListingCard: React.FC = () => {
         {/* Title */}
         <CardItem
           translateZ="60"
-          className="text-xl font-bold text-neutral-600 dark:text-white"
+          className="font-bold text-neutral-600 dark:text-white text-2xl"
         >
           Rocket Sparrow X11
         </CardItem>
