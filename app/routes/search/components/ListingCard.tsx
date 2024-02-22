@@ -1,5 +1,5 @@
 import React from "react";
-import { CardContainer, CardBody, CardItem } from "~/ui/3d-card";
+import { CardContainer, CardBody, CardItem } from "~/ui";
 import { StarIcon } from "@heroicons/react/20/solid";
 
 interface Props {

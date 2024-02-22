@@ -1,6 +1,7 @@
 import { usePageStyles } from "~/hooks";
 import { cn } from "~/utils";
 import { ListingCard } from "./components";
+import { BackgroundBeams } from "~/ui";
 
 export default function SearchPage() {
   usePageStyles("h-full bg-gray-900");
@@ -11,6 +12,7 @@ export default function SearchPage() {
           <ListingCard key={i} />
         ))}
       </div>
+      <BackgroundBeams />
     </div>
   );
 }
