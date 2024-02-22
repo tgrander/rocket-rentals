@@ -8,90 +8,80 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String   // Store a hashed password
- 
-  roles     Role[] 
-  hostProfile      HostProfile?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Role {
-  id   Int    @id @default(autoincrement())
-  name String @unique
-
-  users User[]
+  id       String @id @default(cuid())
+  email    String @unique
+  password String // Store a hashed password
+  isHost  Boolean @default(false)
+  
+  hostProfile HostProfile?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Spacecraft {
-  id        Int             @id @default(autoincrement())
-  name      String
-  speed     Float
+  id    Int    @id @default(autoincrement())
+  name  String
+  speed Float
 
   // Relational fields
-  typeId    Int
-  type      SpaceCraftType  @relation(fields: [typeId], references: [id])
+  typeId Int
+  type   SpaceCraftType @relation(fields: [typeId], references: [id])
 
-  statusId  Int
-  status    SpaceCraftStatus @relation(fields: [statusId], references: [id])
+  statusId Int
+  status   SpaceCraftStatus @relation(fields: [statusId], references: [id])
 
   hostProfileID Int
   hostProfile   HostProfile @relation(fields: [hostProfileID], references: [id])
 
   // Collection of related images
-  images    SpacecraftImages[]
+  images SpacecraftImages[]
 
   // Metadata
-  createdAt DateTime        @default(now())
-  updatedAt DateTime        @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model SpacecraftImages {
-  imageID     Int      @id @default(autoincrement())
+  imageID      Int        @id @default(autoincrement())
   spacecraftID Int
-  imagePath   String
-  description String?
-  spacecraft  Spacecraft @relation(fields: [spacecraftID], references: [id])
+  imagePath    String
+  description  String?
+  spacecraft   Spacecraft @relation(fields: [spacecraftID], references: [id])
 
   @@map("spacecraft_images")
 }
 
 model SpaceCraftType {
-  id   Int    @id @default(autoincrement())
-  name String @unique
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
   spaceCrafts Spacecraft[]
 }
 
 model SpaceCraftStatus {
-  id   Int    @id @default(autoincrement())
-  name String @unique
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
   spaceCrafts Spacecraft[]
 }
 
 model HostProfile {
-  id          Int            @id @default(autoincrement())
-  details     String         // Example field for host-specific details
+  id      Int    @id @default(autoincrement())
+  details String // Example field for host-specific details
 
-  userID      String          @unique
-  user        User           @relation(fields: [userID], references: [id])
-  spacecrafts Spacecraft[]   // Relation to Spacecrafts hosted by this profile
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  userID      String       @unique
+  user        User         @relation(fields: [userID], references: [id])
+  spacecrafts Spacecraft[] // Relation to Spacecrafts hosted by this profile
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Destination {
-  id   Int    @id @default(autoincrement())
-  name String @unique
+  id          Int    @id @default(autoincrement())
+  name        String @unique
   description String
-  distance Int
-  travelTime Int
+  distance    Int
+  travelTime  Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
