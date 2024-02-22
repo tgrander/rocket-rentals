@@ -36,3 +36,17 @@ model Note {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String
 }
+
+model SpaceCraft {
+  id String @id @default(dbgenerated("substring(gen_random_uuid()::text, 1, 10)"))
+  name  String
+  speed Int
+  type SpaceCraftType @relation(fields: [typeId], references: [id])
+  typeId Int
+}
+
+model SpaceCraftType {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  spaceCrafts SpaceCraft[]
+}
