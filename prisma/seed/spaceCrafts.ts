@@ -11,7 +11,7 @@ async function seedSpacecrafts() {
   console.log("Starting to seed spacecrafts...");
 
   for (const [index, sc] of spacecrafts.entries()) {
-    const { name, speed, type, tags, images } = sc;
+    const { name, speed, type, tags, images, pricePerDay } = sc;
 
     const hostEmail = randomAssortmentOfHostUserEmails[index];
 
@@ -19,6 +19,7 @@ async function seedSpacecrafts() {
       data: {
         name: name,
         speed: speed,
+        pricePerDay,
         type: { connect: { name: type } },
         status: { connect: { name: BookingStatus.Available } },
         hostProfile: { connect: { userEmail: hostEmail } },
