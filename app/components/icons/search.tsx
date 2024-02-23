@@ -1,6 +1,6 @@
 import React from "react";
 
-interface Props {
+interface Props extends React.SVGProps<SVGSVGElement> {
   size?: number;
   strokeWidth?: number;
   width?: number;

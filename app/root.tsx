@@ -9,10 +9,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { NextUIProvider } from "@nextui-org/react";
-import { Navbar } from "~/ui";
 
+import { RootNav } from "~/components/root";
 import { getUser } from "~/session.server";
+import { getDestinations } from "~/models/destination.server";
 import stylesheet from "~/tailwind.css";
 
 export const links: LinksFunction = () => [
@@ -21,10 +23,17 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return json({ user: await getUser(request) });
+  return json({
+    user: await getUser(request),
+    destinations: await getDestinations(),
+  });
 };
 
 export default function App() {
+  const data = useLoaderData<typeof loader>();
+  const destinations = data?.destinations ?? [];
+  console.log("destinations :>> ", destinations);
+
   return (
     <html lang="en" className="h-full dark text-foreground bg-background">
       <head>
@@ -35,7 +44,7 @@ export default function App() {
       </head>
       <body className="h-full">
         <NextUIProvider>
-          <Navbar />
+          <RootNav />
           <Outlet />
           <ScrollRestoration />
           <Scripts />
