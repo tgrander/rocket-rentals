@@ -34,6 +34,8 @@ model Spacecraft {
   hostProfileID Int
   hostProfile   HostProfile @relation(fields: [hostProfileID], references: [id])
 
+  tags  Tag[]  
+
   // Collection of related images
   images SpacecraftImages[]
 
@@ -80,9 +82,26 @@ model Destination {
   id          Int    @id @default(autoincrement())
   name        String @unique
   description String
-  distance    Int
-  travelTime  Int
+  distance    String
+  travelTime  String
+
+  tags  Tag[]  
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model TagCategory {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  tags  Tag[]
+}
+
+model Tag {
+  id          Int            @id @default(autoincrement())
+  name        String         @unique
+  categoryId  Int
+  category    TagCategory    @relation(fields: [categoryId], references: [id])
+  destinations Destination[] 
+  spacecrafts Spacecraft[]   
 }
