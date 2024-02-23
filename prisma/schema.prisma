@@ -45,16 +45,17 @@ model Spacecraft {
   hostEmail String
   hostProfile   HostProfile @relation(fields: [hostEmail], references: [userEmail])
   tags  Tag[]  
-  images SpacecraftImages[]
+  images SpacecraftImage[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model SpacecraftImages {
+model SpacecraftImage {
   imageID      Int        @id @default(autoincrement())
   spacecraftID Int
-  imagePath    String
+  cloudinaryPublicId    String // Cloudinary public ID used to generate URL, e.g. `spacecrafts/123456789`
+  isHero      Boolean @default(false)
   description  String?
   spacecraft   Spacecraft @relation(fields: [spacecraftID], references: [id])
 
