@@ -29,7 +29,7 @@ export const randomAssortmentOfHostUserEmails = [
   "host3@example.com",
 ];
 
-const getImagePublicId = (id: string) => {
+const getCloudinaryPublicId = (id: string) => {
   return `spacecrafts/${id}`;
 };
 
@@ -42,7 +42,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Adventure, Tag.FamilyFriendly, Tag.Planetary],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("oymlk75l22o1oh9lcpwl"),
+        cloudinaryPublicId: getCloudinaryPublicId("oymlk75l22o1oh9lcpwl"),
         description: "Luna Glider soaring above the lunar surface.",
       },
     ],
@@ -55,7 +55,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Scientific, Tag.Exploration, Tag.Planetary],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("uvc5fadmuicuikhj66zj"),
+        cloudinaryPublicId: getCloudinaryPublicId("uvc5fadmuicuikhj66zj"),
         description: "Mars Rover Supreme exploring the Martian landscape.",
       },
     ],
@@ -68,7 +68,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Luxury, Tag.Asteroid, Tag.Adventure],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("uaeklrmuowibbhne6kdo"),
+        cloudinaryPublicId: getCloudinaryPublicId("uaeklrmuowibbhne6kdo"),
         description: "Asteroid Nomad docked at an asteroid mining station.",
       },
     ],
@@ -81,7 +81,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Adventure, Tag.Scientific, Tag.Planetary],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("l8vqrdp6aoohwozb0b4i"),
+        cloudinaryPublicId: getCloudinaryPublicId("l8vqrdp6aoohwozb0b4i"),
         description:
           "A sturdy explorer vehicle with thermal shielding, navigating through icy geysers on Titan.",
       },
@@ -95,7 +95,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Luxury, Tag.Relaxation, Tag.Planetary],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("teyh9uxnnebgqzwzzzee"),
+        cloudinaryPublicId: getCloudinaryPublicId("teyh9uxnnebgqzwzzzee"),
         description:
           "A cloud cruiser resembling a futuristic airship, floating among Neptune's bright blue clouds.",
       },
@@ -109,7 +109,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Exploration, Tag.Adventure, Tag.Planetary],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("avdois4rgy4bk0rdxtxo"),
+        cloudinaryPublicId: getCloudinaryPublicId("avdois4rgy4bk0rdxtxo"),
         description:
           "An ice explorer vehicle with glowing headlights, exploring a dark, icy cave on Pluto.",
       },
@@ -123,7 +123,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Cultural, Tag.Orbital, Tag.Relaxation],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("ddugrkuldzffeajch3gu"),
+        cloudinaryPublicId: getCloudinaryPublicId("ddugrkuldzffeajch3gu"),
         description:
           "A modular space station in Earth's orbit, featuring artistic elements like zero-gravity art studios and a lush biodome.",
       },
@@ -137,7 +137,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Exploration, Tag.Intergalactic, Tag.Cultural],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("vg7esbyx8aek18q6vufy"),
+        cloudinaryPublicId: getCloudinaryPublicId("vg7esbyx8aek18q6vufy"),
         description:
           "A sleek, FTL cruiser exiting a warp bubble near the Alpha Centauri system.",
       },
@@ -151,7 +151,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Relaxation, Tag.Planetary, Tag.Scientific],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId(""),
+        cloudinaryPublicId: getCloudinaryPublicId("venusian-serenity"),
         description:
           "An elegant aerostat floating in Venus's upper atmosphere, with hanging gardens and water features.",
       },
@@ -165,7 +165,7 @@ export const spacecrafts: SpacecraftData[] = [
     tags: [Tag.Exploration, Tag.Luxury, Tag.Scientific],
     images: [
       {
-        cloudinaryPublicId: getImagePublicId("elesbt3evnbxeof0bimk"),
+        cloudinaryPublicId: getCloudinaryPublicId("elesbt3evnbxeof0bimk"),
         description:
           "A luxurious quantum yacht positioned at the very edge of the observable universe.",
       },
