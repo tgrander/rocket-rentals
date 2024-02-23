@@ -7,9 +7,17 @@ async function seedDestinations() {
   console.log("Starting to seed destinations...");
 
   for (const destination of destinations) {
+    const { tags, ...destinationData } = destination; // Destructure to separate tags from other destination data
+
     await prisma.destination.create({
-      data: destination,
+      data: {
+        ...destinationData, // Spread operator to include all destination fields except tags
+        tags: {
+          connect: tags.map((tagName) => ({ name: tagName })), // Connect each tag by name
+        },
+      },
     });
+
     console.log(`Seeded ${destination.name}`);
   }
 
