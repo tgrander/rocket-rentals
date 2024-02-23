@@ -25,11 +25,11 @@ export default function SearchPage() {
         {spacecrafts.map((spacecraft) => (
           <ListingCard
             key={spacecraft.id}
-            cloudinaryPublicId={spacecraft.images[0].url}
+            id={spacecraft.id}
+            cloudinaryPublicId={spacecraft.images[0].cloudinaryPublicId}
             name={spacecraft.name}
             type={spacecraft.type.name}
-            price={spacecraft.price}
-            rating={spacecraft.rating}
+            price={spacecraft.pricePerDay}
           />
         ))}
       </div>

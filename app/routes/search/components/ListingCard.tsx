@@ -10,8 +10,6 @@ interface Props {
   cloudinaryPublicId: string;
   type: string;
   price: string;
-  capacity: number;
-  rating: string;
 }
 
 export const ListingCard: React.FC<Props> = ({
@@ -20,8 +18,6 @@ export const ListingCard: React.FC<Props> = ({
   cloudinaryPublicId,
   type,
   price,
-  capacity,
-  rating,
 }) => {
   useLozad();
 
