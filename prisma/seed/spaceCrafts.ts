@@ -27,7 +27,7 @@ async function seedSpacecrafts() {
         },
         images: {
           create: images.map((img) => ({
-            imagePath: img.imagePath,
+            cloudinaryPublicId: img.cloudinaryPublicId,
             description: img.description,
           })),
         },

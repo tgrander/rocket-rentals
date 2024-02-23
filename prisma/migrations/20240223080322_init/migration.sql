@@ -39,7 +39,8 @@ CREATE TABLE "Spacecraft" (
 CREATE TABLE "spacecraft_images" (
     "imageID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "spacecraftID" INTEGER NOT NULL,
-    "imagePath" TEXT NOT NULL,
+    "cloudinaryPublicId" TEXT NOT NULL,
+    "isHero" BOOLEAN NOT NULL DEFAULT false,
     "description" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
