@@ -12,8 +12,22 @@ model User {
   email    String @unique
   password String // Store a hashed password
   isHost  Boolean @default(false)
+  firstName String
+  lastName String
   
   hostProfile HostProfile?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HostProfile {
+  id      Int    @id @default(autoincrement())
+  details String // host-specific details
+
+  userID      String       @unique
+  user        User         @relation(fields: [userID], references: [id])
+  spacecrafts Spacecraft[] // Relation to Spacecrafts hosted by this profile
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -64,18 +78,6 @@ model BookingStatus {
   id          Int          @id @default(autoincrement())
   name        String       @unique
   spaceCrafts Spacecraft[]
-}
-
-model HostProfile {
-  id      Int    @id @default(autoincrement())
-  details String // Example field for host-specific details
-
-  userID      String       @unique
-  user        User         @relation(fields: [userID], references: [id])
-  spacecrafts Spacecraft[] // Relation to Spacecrafts hosted by this profile
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model Destination {
