@@ -12,7 +12,7 @@ import {
 import { useLoaderData } from "@remix-run/react";
 import { NextUIProvider } from "@nextui-org/react";
 
-import { RootNav } from "~/components/root";
+import { RootNav, DestinationsAutocomplete } from "~/components/root";
 import { getUser } from "~/session.server";
 import { getDestinations } from "~/models/destination.server";
 import stylesheet from "~/tailwind.css";
@@ -45,6 +45,9 @@ export default function App() {
       <body className="h-full">
         <NextUIProvider>
           <RootNav />
+          <div className="w-full h-fit max-h-16 max-w-5xl mx-auto flex items-center px-4 sm:px-6">
+            <DestinationsAutocomplete />
+          </div>
           <Outlet />
           <ScrollRestoration />
           <Scripts />
