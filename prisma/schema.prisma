@@ -27,13 +27,13 @@ model HostProfile {
 
   userEmail      String       @unique
   user        User         @relation(fields: [userEmail], references: [email])
-  spacecrafts Spacecraft[] // Relation to Spacecrafts hosted by this profile
+  spacecrafts SpaceCraft[] // Relation to Spacecrafts hosted by this profile
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model Spacecraft {
+model SpaceCraft {
   id    Int    @id @default(autoincrement())
   name  String
   speed Float
@@ -57,7 +57,7 @@ model SpacecraftImage {
   cloudinaryPublicId    String // Cloudinary public ID used to generate URL, e.g. `spacecrafts/123456789`
   isHero      Boolean @default(false)
   description  String?
-  spacecraft   Spacecraft @relation(fields: [spacecraftID], references: [id])
+  spacecraft   SpaceCraft @relation(fields: [spacecraftID], references: [id])
 
   @@map("spacecraft_images")
 
@@ -68,7 +68,7 @@ model SpacecraftImage {
 model SpaceCraftType {
   id          Int          @id @default(autoincrement())
   name        String       @unique
-  spaceCrafts Spacecraft[]
+  spaceCrafts SpaceCraft[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -78,7 +78,7 @@ model BookingStatus {
   id          Int          @id @default(autoincrement())
   name        String       @unique
   
-  spaceCrafts Spacecraft[]
+  spaceCrafts SpaceCraft[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -114,7 +114,7 @@ model Tag {
   
   category    TagCategory    @relation(fields: [categoryName], references: [name])
   destinations Destination[] 
-  spacecrafts Spacecraft[]  
+  spacecrafts SpaceCraft[]  
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt 

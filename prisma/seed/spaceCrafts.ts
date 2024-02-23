@@ -15,7 +15,7 @@ async function seedSpacecrafts() {
 
     const hostEmail = randomAssortmentOfHostUserEmails[index];
 
-    const spacecraft = await prisma.spacecraft.create({
+    const spacecraft = await prisma.spaceCraft.create({
       data: {
         name: name,
         speed: speed,
