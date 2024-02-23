@@ -29,7 +29,7 @@ model Spacecraft {
   type   SpaceCraftType @relation(fields: [typeId], references: [id])
 
   statusId Int
-  status   SpaceCraftStatus @relation(fields: [statusId], references: [id])
+  status   String
 
   hostProfileID Int
   hostProfile   HostProfile @relation(fields: [hostProfileID], references: [id])
@@ -53,12 +53,6 @@ model SpacecraftImages {
 }
 
 model SpaceCraftType {
-  id          Int          @id @default(autoincrement())
-  name        String       @unique
-  spaceCrafts Spacecraft[]
-}
-
-model SpaceCraftStatus {
   id          Int          @id @default(autoincrement())
   name        String       @unique
   spaceCrafts Spacecraft[]
