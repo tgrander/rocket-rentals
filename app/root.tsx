@@ -10,6 +10,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { NextUIProvider } from "@nextui-org/react";
+import { Navbar } from "~/ui";
 
 import { getUser } from "~/session.server";
 import stylesheet from "~/tailwind.css";
@@ -34,6 +35,7 @@ export default function App() {
       </head>
       <body className="h-full">
         <NextUIProvider>
+          <Navbar />
           <Outlet />
           <ScrollRestoration />
           <Scripts />
