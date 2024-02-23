@@ -161,7 +161,7 @@ export const spacecrafts: SpacecraftData[] = [
     pricePerDay: "Ξ312,500",
     images: [
       {
-        cloudinaryPublicId: getCloudinaryPublicId("venusian-serenity"),
+        cloudinaryPublicId: getCloudinaryPublicId("ywmns86so8muvxtgscrn"),
         description:
           "An elegant aerostat floating in Venus's upper atmosphere, with hanging gardens and water features.",
       },

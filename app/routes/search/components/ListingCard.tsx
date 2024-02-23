@@ -22,7 +22,7 @@ export const ListingCard: React.FC<Props> = ({
   useLozad();
 
   const { src, dataSrc } = getCloudinaryUrl({
-    publicId: "spacecrafts/l8vqrdp6aoohwozb0b4i",
+    publicId: cloudinaryPublicId,
     w: 700,
     h: 648,
     blurryLoader: {
@@ -52,7 +52,7 @@ export const ListingCard: React.FC<Props> = ({
           translateZ="40"
           className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-500 mb-2"
         >
-          Spaceplane
+          {type}
         </CardItem>
 
         {/* TITLE */}
@@ -60,7 +60,7 @@ export const ListingCard: React.FC<Props> = ({
           translateZ="60"
           className="font-bold text-neutral-600 dark:text-white text-2xl"
         >
-          Rocket Sparrow X11
+          {name}
         </CardItem>
         <div className="flex justify-between items-center mt-10">
           {/* PRICE */}
@@ -68,7 +68,7 @@ export const ListingCard: React.FC<Props> = ({
             translateZ={50}
             className="py-2 rounded-xl text-xl font-normal dark:text-white"
           >
-            ⧫100,000 day
+            {price} day
           </CardItem>
 
           {/* RATING */}
