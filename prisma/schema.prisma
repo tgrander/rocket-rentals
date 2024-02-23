@@ -29,7 +29,7 @@ model Spacecraft {
   type   SpaceCraftType @relation(fields: [typeID], references: [id])
 
   statusID Int
-  status   ListingBookingStatus @relation(fields: [statusID], references: [id])
+  status   BookingStatus @relation(fields: [statusID], references: [id])
 
   hostProfileID Int
   hostProfile   HostProfile @relation(fields: [hostProfileID], references: [id])
@@ -58,7 +58,7 @@ model SpaceCraftType {
   spaceCrafts Spacecraft[]
 }
 
-model ListingBookingStatus {
+model BookingStatus {
   id          Int          @id @default(autoincrement())
   name        String       @unique
   spaceCrafts Spacecraft[]
