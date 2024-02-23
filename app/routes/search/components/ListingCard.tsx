@@ -2,6 +2,7 @@ import React from "react";
 import { CardContainer, CardBody, CardItem } from "~/ui";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { useLozad } from "~/hooks";
+import { getCloudinaryUrl } from "~/utils";
 
 interface Props {
   imageUrl: string;
@@ -15,14 +16,25 @@ interface Props {
 export const ListingCard: React.FC = () => {
   useLozad();
 
+  const { src, dataSrc } = getCloudinaryUrl({
+    publicId: "spacecrafts/l8vqrdp6aoohwozb0b4i",
+    w: 700,
+    h: 648,
+    blurryLoader: {
+      w: 30,
+      h: 30,
+      blur: 1000,
+    },
+  });
+
   return (
     <CardContainer className="inter-var" containerClassName="py-0">
       <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full  h-auto rounded-xl p-6 border">
         {/* IMAGE */}
         <CardItem translateZ="100" className="w-full mb-12">
           <img
-            src="https://res.cloudinary.com/dfjcoifwd/image/upload/w_30,h_30,c_scale,e_blur:1000,f_auto/v1/spacecrafts/l8vqrdp6aoohwozb0b4i"
-            data-src="https://res.cloudinary.com/dfjcoifwd/image/upload/f_auto,q_80,dpr_auto,w_700,h_648,c_fill/fl_progressive/v1/spacecrafts/l8vqrdp6aoohwozb0b4i"
+            src={src}
+            data-src={dataSrc}
             className="lozad h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
             alt="Spacecraft"
             loading="lazy"
