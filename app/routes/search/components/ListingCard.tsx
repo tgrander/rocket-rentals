@@ -5,15 +5,24 @@ import { useLozad } from "~/hooks";
 import { getCloudinaryUrl } from "~/utils";
 
 interface Props {
-  imageUrl: string;
+  id: number;
   name: string;
+  cloudinaryPublicId: string;
   type: string;
   price: string;
   capacity: number;
   rating: string;
 }
 
-export const ListingCard: React.FC = () => {
+export const ListingCard: React.FC<Props> = ({
+  id,
+  name,
+  cloudinaryPublicId,
+  type,
+  price,
+  capacity,
+  rating,
+}) => {
   useLozad();
 
   const { src, dataSrc } = getCloudinaryUrl({

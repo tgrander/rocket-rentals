@@ -37,6 +37,7 @@ model SpaceCraft {
   id    Int    @id @default(autoincrement())
   name  String
   speed Float
+  pricePerDay String
 
   typeName String
   type   SpaceCraftType @relation(fields: [typeName], references: [name])

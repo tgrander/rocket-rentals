@@ -11,6 +11,7 @@ type SpacecraftData = {
   name: string;
   type: SpaceCraftTypeName;
   status: BookingStatus;
+  pricePerDay: string;
   speed: number;
   tags: Tag[];
   images: SpacecraftImageData[];
@@ -39,6 +40,7 @@ export const spacecrafts: SpacecraftData[] = [
     type: SpaceCraftTypeName.Shuttle,
     status: BookingStatus.Available,
     speed: 7500, // Example speed in km/h
+    pricePerDay: "Ξ250,000",
     tags: [Tag.Adventure, Tag.FamilyFriendly, Tag.Planetary],
     images: [
       {
@@ -53,6 +55,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 100, // Assuming a slower speed for a rover
     tags: [Tag.Scientific, Tag.Exploration, Tag.Planetary],
+    pricePerDay: "Ξ225,000",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("uvc5fadmuicuikhj66zj"),
@@ -66,6 +69,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 15000, // Example speed for a mining shuttle
     tags: [Tag.Luxury, Tag.Asteroid, Tag.Adventure],
+    pricePerDay: "Ξ300,000",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("uaeklrmuowibbhne6kdo"),
@@ -79,6 +83,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 500, // Example speed, adjust as necessary
     tags: [Tag.Adventure, Tag.Scientific, Tag.Planetary],
+    pricePerDay: "Ξ275,000",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("l8vqrdp6aoohwozb0b4i"),
@@ -93,6 +98,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 800, // Example speed, adjust as necessary
     tags: [Tag.Luxury, Tag.Relaxation, Tag.Planetary],
+    pricePerDay: "Ξ325,000",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("teyh9uxnnebgqzwzzzee"),
@@ -107,6 +113,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 450, // Example speed, adjust as necessary
     tags: [Tag.Exploration, Tag.Adventure, Tag.Planetary],
+    pricePerDay: "Ξ287,500",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("avdois4rgy4bk0rdxtxo"),
@@ -121,6 +128,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 0, // Stationary in orbit
     tags: [Tag.Cultural, Tag.Orbital, Tag.Relaxation],
+    pricePerDay: "Ξ350,000",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("ddugrkuldzffeajch3gu"),
@@ -135,6 +143,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 25000, // Hypothetical FTL speed
     tags: [Tag.Exploration, Tag.Intergalactic, Tag.Cultural],
+    pricePerDay: "Ξ400,000",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("vg7esbyx8aek18q6vufy"),
@@ -149,6 +158,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 200, // Adjust based on realistic capabilities
     tags: [Tag.Relaxation, Tag.Planetary, Tag.Scientific],
+    pricePerDay: "Ξ312,500",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("venusian-serenity"),
@@ -163,6 +173,7 @@ export const spacecrafts: SpacecraftData[] = [
     status: BookingStatus.Available,
     speed: 30000, // Hypothetical quantum speed
     tags: [Tag.Exploration, Tag.Luxury, Tag.Scientific],
+    pricePerDay: "Ξ450,000",
     images: [
       {
         cloudinaryPublicId: getCloudinaryPublicId("elesbt3evnbxeof0bimk"),
