@@ -2,17 +2,30 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const spacecraftTypes = [
-  { name: "Shuttle" },
-  { name: "Rover" },
-  { name: "Explorer" },
-  { name: "Mining Shuttle" },
-  { name: "Cloud Cruiser" },
-  { name: "Ice Explorer" },
-  { name: "Space Station" },
-  { name: "FTL Cruiser" },
-  { name: "Aerostat" },
-  { name: "Quantum Yacht" },
+export enum SpaceCraftTypeName {
+  Shuttle = "Shuttle",
+  Rover = "Rover",
+  Explorer = "Explorer",
+  "Mining Shuttle" = "Mining Shuttle",
+  "Cloud Cruiser" = "Cloud Cruiser",
+  "Ice Explorer" = "Ice Explorer",
+  "Space Station" = "Space Station",
+  "FTL Cruiser" = "FTL Cruiser",
+  Aerostat = "Aerostat",
+  "Quantum Yacht" = "Quantum Yacht",
+}
+
+const spacecraftTypes: { name: SpaceCraftTypeName }[] = [
+  { name: SpaceCraftTypeName.Aerostat },
+  { name: SpaceCraftTypeName["Cloud Cruiser"] },
+  { name: SpaceCraftTypeName.Explorer },
+  { name: SpaceCraftTypeName["FTL Cruiser"] },
+  { name: SpaceCraftTypeName["Ice Explorer"] },
+  { name: SpaceCraftTypeName["Mining Shuttle"] },
+  { name: SpaceCraftTypeName["Quantum Yacht"] },
+  { name: SpaceCraftTypeName.Rover },
+  { name: SpaceCraftTypeName.Shuttle },
+  { name: SpaceCraftTypeName["Space Station"] },
 ];
 
 async function seedSpacecraftTypes() {
@@ -37,11 +50,13 @@ async function seedSpacecraftTypes() {
   console.log("Finished seeding spacecraft types.");
 }
 
-seedSpacecraftTypes()
-  .catch((e) => {
-    console.error("Error seeding spacecraft types:", e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+export default async () => {
+  await seedSpacecraftTypes()
+    .catch((e) => {
+      console.error("Error seeding spacecraft types:", e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+};

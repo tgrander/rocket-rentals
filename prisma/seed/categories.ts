@@ -37,11 +37,13 @@ async function seedTagCategoriesAndTags() {
   console.log("Finished seeding tag categories and tags.");
 }
 
-seedTagCategoriesAndTags()
-  .catch((e) => {
-    console.error("Error seeding tag categories and tags:", e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+export default async () => {
+  await seedTagCategoriesAndTags()
+    .catch((e) => {
+      console.error("Error seeding tag categories and tags:", e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+};

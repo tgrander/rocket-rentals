@@ -25,11 +25,13 @@ async function seedHostUsers() {
   }
 }
 
-seedHostUsers()
-  .catch((e) => {
-    console.error("Error seeding host users:", e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+export default async () => {
+  await seedHostUsers()
+    .catch((e) => {
+      console.error("Error seeding host users:", e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+};

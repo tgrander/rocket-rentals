@@ -29,10 +29,11 @@ export default function SearchPage() {
   );
 }
 
-export const action = ({ request }: ActionFunctionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const body = await request.formData();
-  const todo = await fakeCreateTodo({
-    title: body.get("title"),
-  });
-  return redirect(`/todos/${todo.id}`);
+  // const todo = await fakeCreateTodo({
+  //   title: body.get("title"),
+  // });
+  // return redirect(`/todos/${todo.id}`);
+  return json({ spacecrafts: [{ id: "abc", name: "Mars Rover Supreme" }] });
 };

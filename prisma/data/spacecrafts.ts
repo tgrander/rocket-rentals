@@ -1,7 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import { Tag } from "../data/tags";
-
-const prisma = new PrismaClient();
+import { BookingStatus } from "./bookingStatus";
+import { SpaceCraftTypeName } from "../seed/spaceCraftTypes";
 
 type SpacecraftImageData = {
   imagePath: string;
@@ -10,20 +9,31 @@ type SpacecraftImageData = {
 
 type SpacecraftData = {
   name: string;
-  type: string;
-  status: string;
-  hostProfile: string;
+  type: SpaceCraftTypeName;
+  status: BookingStatus;
   speed: number;
   tags: Tag[];
   images: SpacecraftImageData[];
 };
 
+export const randomAssortmentOfHostUserEmails = [
+  "host4@example.com",
+  "host5@example.com",
+  "host1@example.com",
+  "host5@example.com",
+  "host4@example.com",
+  "host4@example.com",
+  "host4@example.com",
+  "host4@example.com",
+  "host1@example.com",
+  "host3@example.com",
+];
+
 export const spacecrafts: SpacecraftData[] = [
   {
     name: "Luna Glider",
-    type: "Shuttle",
-    status: "Available",
-    hostProfile: "host@example.com",
+    type: SpaceCraftTypeName.Shuttle,
+    status: BookingStatus.Available,
     speed: 7500, // Example speed in km/h
     tags: [Tag.Adventure, Tag.FamilyFriendly, Tag.Planetary],
     images: [
@@ -39,9 +49,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Mars Rover Supreme",
-    type: "Rover",
-    status: "Available",
-    hostProfile: "host@example.com",
+    type: SpaceCraftTypeName.Rover,
+    status: BookingStatus.Available,
     speed: 100, // Assuming a slower speed for a rover
     tags: [Tag.Scientific, Tag.Exploration, Tag.Planetary],
     images: [
@@ -53,9 +62,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Asteroid Nomad",
-    type: "Mining Shuttle",
-    status: "Available",
-    hostProfile: "host@example.com",
+    type: SpaceCraftTypeName["Mining Shuttle"],
+    status: BookingStatus.Available,
     speed: 15000, // Example speed for a mining shuttle
     tags: [Tag.Luxury, Tag.Asteroid, Tag.Adventure],
     images: [
@@ -67,9 +75,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Titan Tundra Explorer",
-    type: "Explorer",
-    status: "Ready for Adventure",
-    hostProfile: "host1@example.com", // Placeholder, replace with actual host profile identifier
+    type: SpaceCraftTypeName.Explorer,
+    status: BookingStatus.Available,
     speed: 500, // Example speed, adjust as necessary
     tags: [Tag.Adventure, Tag.Scientific, Tag.Planetary],
     images: [
@@ -82,9 +89,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Neptune Nimbus",
-    type: "Cloud Cruiser",
-    status: "Operational",
-    hostProfile: "host2@example.com", // Placeholder, replace with actual host profile identifier
+    type: SpaceCraftTypeName["Cloud Cruiser"],
+    status: BookingStatus.Available,
     speed: 800, // Example speed, adjust as necessary
     tags: [Tag.Luxury, Tag.Relaxation, Tag.Planetary],
     images: [
@@ -97,9 +103,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Pluto Pathfinder",
-    type: "Ice Explorer",
-    status: "Expedition Ready",
-    hostProfile: "host3@example.com", // Placeholder, replace with actual host profile identifier
+    type: SpaceCraftTypeName["Ice Explorer"],
+    status: BookingStatus.Available,
     speed: 450, // Example speed, adjust as necessary
     tags: [Tag.Exploration, Tag.Adventure, Tag.Planetary],
     images: [
@@ -112,9 +117,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Orbit Haven",
-    type: "Space Station",
-    status: "Operational",
-    hostProfile: "host4@example.com", // Replace with actual host profile identifier
+    type: SpaceCraftTypeName["Space Station"],
+    status: BookingStatus.Available,
     speed: 0, // Stationary in orbit
     tags: [Tag.Cultural, Tag.Orbital, Tag.Relaxation],
     images: [
@@ -127,9 +131,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Galactic Pioneer",
-    type: "FTL Cruiser",
-    status: "Ready for Exploration",
-    hostProfile: "host5@example.com", // Replace with actual host profile identifier
+    type: SpaceCraftTypeName["FTL Cruiser"],
+    status: BookingStatus.Available,
     speed: 25000, // Hypothetical FTL speed
     tags: [Tag.Exploration, Tag.Intergalactic, Tag.Cultural],
     images: [
@@ -142,9 +145,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Venusian Serenity",
-    type: "Aerostat",
-    status: "Serenity Mode",
-    hostProfile: "host6@example.com", // Replace with actual host profile identifier
+    type: SpaceCraftTypeName["Aerostat"],
+    status: BookingStatus.Available,
     speed: 200, // Adjust based on realistic capabilities
     tags: [Tag.Relaxation, Tag.Planetary, Tag.Scientific],
     images: [
@@ -157,9 +159,8 @@ export const spacecrafts: SpacecraftData[] = [
   },
   {
     name: "Quantum Leap",
-    type: "Quantum Yacht",
-    status: "Quantum Ready",
-    hostProfile: "host7@example.com", // Replace with actual host profile identifier
+    type: SpaceCraftTypeName["Quantum Yacht"],
+    status: BookingStatus.Available,
     speed: 30000, // Hypothetical quantum speed
     tags: [Tag.Exploration, Tag.Luxury, Tag.Scientific],
     images: [

@@ -25,11 +25,13 @@ async function seedListingBookingStatuses() {
   console.log("Finished seeding ListingBookingStatuses.");
 }
 
-seedListingBookingStatuses()
-  .catch((e) => {
-    console.error("Error seeding ListingBookingStatuses:", e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+export default async () => {
+  await seedListingBookingStatuses()
+    .catch((e) => {
+      console.error("Error seeding ListingBookingStatuses:", e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+};

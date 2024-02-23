@@ -24,11 +24,13 @@ async function seedDestinations() {
   console.log("Finished seeding destinations.");
 }
 
-seedDestinations()
-  .catch((e) => {
-    console.error("Error seeding destinations:", e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+export default async () => {
+  await seedDestinations()
+    .catch((e) => {
+      console.error("Error seeding destinations:", e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+};
