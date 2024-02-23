@@ -17,7 +17,7 @@ export default function SearchPage() {
   const data = useLoaderData<typeof loader>();
   const spacecrafts = data?.spacecrafts ?? [];
 
-  usePageStyles("h-full bg-gray-900");
+  // usePageStyles("h-full bg-gray-900");
 
   return (
     <div className="w-screen z-50">
