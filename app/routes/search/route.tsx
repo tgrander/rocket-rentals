@@ -24,7 +24,7 @@ export default function SearchPage() {
           <ListingCard key={i} />
         ))}
       </div>
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
     </div>
   );
 }
