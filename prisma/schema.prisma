@@ -25,11 +25,11 @@ model Spacecraft {
   speed Float
 
   // Relational fields
-  typeId Int
-  type   SpaceCraftType @relation(fields: [typeId], references: [id])
+  typeID Int
+  type   SpaceCraftType @relation(fields: [typeID], references: [id])
 
-  statusId Int
-  status   String
+  statusID Int
+  status   ListingBookingStatus @relation(fields: [statusID], references: [id])
 
   hostProfileID Int
   hostProfile   HostProfile @relation(fields: [hostProfileID], references: [id])
@@ -53,6 +53,12 @@ model SpacecraftImages {
 }
 
 model SpaceCraftType {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  spaceCrafts Spacecraft[]
+}
+
+model ListingBookingStatus {
   id          Int          @id @default(autoincrement())
   name        String       @unique
   spaceCrafts Spacecraft[]
