@@ -1,13 +1,7 @@
 import { PrismaClient } from "@prisma/client";
+import { bookingStatuses } from "../data/bookingStatus";
 
 const prisma = new PrismaClient();
-
-const listingBookingStatuses = [
-  { name: "Available" },
-  { name: "Booked" },
-  { name: "Under Maintenance" },
-  { name: "Unavailable" },
-];
 
 async function seedListingBookingStatuses() {
   console.log("Seeding ListingBookingStatuses...");
@@ -21,7 +15,7 @@ async function seedListingBookingStatuses() {
   });
 
   // Seed each status
-  for (const status of listingBookingStatuses) {
+  for (const status of bookingStatuses) {
     const createdStatus = await prisma.bookingStatus.create({
       data: status,
     });
