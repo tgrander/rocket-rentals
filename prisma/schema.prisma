@@ -100,8 +100,8 @@ model TagCategory {
 model Tag {
   id          Int            @id @default(autoincrement())
   name        String         @unique
-  categoryId  Int
-  category    TagCategory    @relation(fields: [categoryId], references: [id])
+  categoryName  String
+  category    TagCategory    @relation(fields: [categoryName], references: [name])
   destinations Destination[] 
   spacecrafts Spacecraft[]   
 }
