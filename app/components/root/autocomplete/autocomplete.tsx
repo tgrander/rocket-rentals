@@ -6,16 +6,22 @@ import {
 } from "@nextui-org/react";
 import { SearchIcon } from "../../icons";
 import { users } from "./data";
+import { ClientDestinations } from "~/models/destination.server";
 
-export function DestinationsAutocomplete() {
+interface Props {
+  destinations: ClientDestinations;
+}
+
+export function DestinationsAutocomplete({ destinations }: Props) {
   return (
     <Autocomplete
+      size="lg"
       classNames={{
         base: "max-w-xs",
         listboxWrapper: "max-h-[320px]",
         selectorButton: "text-default-500",
       }}
-      defaultItems={users}
+      // defaultItems={users}
       inputProps={{
         classNames: {
           input: "ml-1",
@@ -53,32 +59,11 @@ export function DestinationsAutocomplete() {
       radius="full"
       variant="bordered"
     >
-      {(item) => (
-        <AutocompleteItem key={item.id} textValue={item.name}>
-          <div className="flex justify-between items-center">
-            <div className="flex gap-2 items-center">
-              <Avatar
-                alt={item.name}
-                className="flex-shrink-0"
-                size="sm"
-                src={item.avatar}
-              />
-              <div className="flex flex-col">
-                <span className="text-small">{item.name}</span>
-                <span className="text-tiny text-default-400">{item.team}</span>
-              </div>
-            </div>
-            <Button
-              className="border-small mr-0.5 font-medium shadow-small"
-              radius="full"
-              size="sm"
-              variant="bordered"
-            >
-              Add
-            </Button>
-          </div>
+      {destinations.map((destination) => (
+        <AutocompleteItem key={destination.id} value={destination.name}>
+          {destination.name}
         </AutocompleteItem>
-      )}
+      ))}
     </Autocomplete>
   );
 }
