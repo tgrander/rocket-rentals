@@ -22,20 +22,24 @@
  };
  */
 
-export function createParamExtractor<
-  T extends Record<string, string | number>,
->() {
+export function createParamExtractor<T>() {
   return function extractParams(params: URLSearchParams): T {
-    const result: any = {}; // Temporarily use `any` to bypass TypeScript's strict type checks
+    const result: any = {};
 
-    for (const key of params.keys()) {
-      const value = params.get(key);
+    // Iterate over each key defined in T
+    (Object.keys(params) as Array<keyof T>).forEach((key) => {
+      const values = params.getAll(key as string);
 
-      // Check if the value is numeric and should be converted to a number
-      const numericValue = parseInt(value || "", 10);
-      result[key] = isNaN(numericValue) ? value : numericValue;
-    }
+      if (values.length > 1) {
+        // Handle array values
+        result[key] = values;
+      } else {
+        const value = values[0];
+        const numericValue = parseFloat(value);
+        result[key] = isNaN(numericValue) ? value : numericValue;
+      }
+    });
 
-    return result as T; // Assert the final result as type T
+    return result as T;
   };
 }
